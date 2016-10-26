@@ -15,18 +15,19 @@ import javax.swing.JOptionPane;
 public class Equipo {
     private static int IDEquipo = 0;
     private String nombre;
-    private int importe, nabonados, gastos_generales;
+    private int importe, nabonados, gastos_fijos, gastos_var;
     ArrayList <Equipo> ListaEquipos = new ArrayList<Equipo>();
     private ArrayList<Jugador> jugador;
     private Jugador jugadores;
     
     //Constructor con argumentos de la clase equipo
-    public Equipo(int id, String nom, int imp,int na, int gg){
+    public Equipo(int id, String nom, int imp,int na, int gf, int gv){
         IDEquipo = id;
         nombre = nom;
         importe = imp;
         nabonados = na;
-        gastos_generales = gg;
+        gastos_fijos = gf;
+        gastos_var = gv;
     }
 
     Equipo() {}
@@ -51,9 +52,14 @@ public class Equipo {
         nabonados = nabo;
     }
     
-    //Asigna un entero a la variable gastos generales
-    public void setGastosGenerales(int gg){
-        gastos_generales = gg;
+    //Asigna un entero a la variable gastos fijos
+    public void setGastosFijos(int gf){
+        gastos_fijos = gf;
+    }
+    
+    //Asigna un entero a la variable gastos variables
+    public void setGastosVariables(int gv){
+        gastos_var = gv;
     }
     
     //Devuelve el nombre del equipo
@@ -71,9 +77,14 @@ public class Equipo {
         return nabonados;
     }
     
-    //Devuelve los gastos generales anuales que tiene el equipo
-    public int getGastosGenerales(){
-        return gastos_generales;
+    //Devuelve los gastos fijos anuales que tiene el equipo
+    public int getGastosFijos(){
+        return gastos_fijos;
+    }
+    
+    //Devuelve los gastos variables anuales que tiene el equipo
+    public int getGastosVariables(){
+        return gastos_var;
     }
     
     //Funcion para añadir un equipo, con sus correspondientes datos
@@ -82,14 +93,16 @@ public class Equipo {
         nombre = tryCatchString("Nombre del equipo: ");
         importe = tryCatchEnteros("Importe de caja actual: ");
         nabonados = tryCatchEnteros("Numero de abonados: ");
-        gastos_generales = tryCatchEnteros("Gastos generales anuales: ");
+        gastos_fijos = tryCatchEnteros("Gastos fijos generales anuales: ");
+        gastos_var = tryCatchEnteros("Gastos variables generales anuales: ");
         
-        Equipo equipo = new Equipo(IDEquipo, nombre, importe, nabonados, gastos_generales);
+        Equipo equipo = new Equipo(IDEquipo, nombre, importe, nabonados, gastos_fijos, gastos_var);
         this.ListaEquipos.add(equipo);
         return equipo;
     }
    
     public String toString(Equipo e){
+        return(" Nombre: "+e.getNombre()+" Importe: "+e.getImporte()+" Numero Abonados: "+e.getNAbonados()+" Gastos fijos: "+e.getGastosFijos()+" Gastos variables: "+e.getGastosVariables());
     }
     
     //Funcion que muestra la lista de equipos
