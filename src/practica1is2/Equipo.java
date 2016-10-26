@@ -90,6 +90,7 @@ public class Equipo {
     }
    
     public String toString(Equipo e){
+        return(" Nombre: "+e.getNombre()+" --Importe: "+e.getImporte()+"€ --Numero Abonados: "+e.getNAbonados()+" --Gastos generales: "+e.getGastosGenerales()+"€");
     }
     
     //Funcion que muestra la lista de equipos
